@@ -1,0 +1,22 @@
+{
+  "name": "maratur",
+  "version": "1.0.0",
+  "description": "Maratur é uma aplicação que mapeia todos os atrativos turístico do estado do Maranhão, ela faz parte de um desafio proposto pelo programa Trilhas Inova, uma iniciativa SECTI(Secretaria de Tecnologia e inovação) do estado do Maranhão junto com a FAPEMA e a Alura.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.16.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2",
+    "nodemon": "^3.1.4",
+    "prisma": "^5.16.2"
+  }
+}

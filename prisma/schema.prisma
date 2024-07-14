@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Region {
+  cod_region  Int          @id @default(autoincrement())
+  region_name String
+  attractive  Attractive[]
+}
+
+model city {
+  cod_city   Int          @id @default(autoincrement())
+  name       String
+  attractive Attractive[]
+}
+
+model Destiny {
+  cod_destiny Int        @id @default(autoincrement())
+  latitude    String
+  longitude   String
+  attractive  Attractive?
+}
+
+model Attractive {
+  cod_attractive Int     @id @default(autoincrement())
+  name           String
+  type           String
+  description    String
+  cod_destiny    Int     @unique
+  cod_region     Int
+  cod_city       Int
+  city           city    @relation(fields: [cod_city], references: [cod_city])
+  region         Region  @relation(fields: [cod_region], references: [cod_region])
+  destiny        Destiny @relation(fields: [cod_destiny], references: [cod_destiny])
+
+  image Image[]
+}
+
+model Image {
+  id_image       Int        @id @default(autoincrement())
+  cod_attractive Int
+  name           String
+  image_path     String
+  attractive     Attractive @relation(fields: [cod_attractive], references: [cod_attractive])
+}
