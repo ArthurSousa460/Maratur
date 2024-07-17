@@ -6,7 +6,7 @@ class AttractiveController{
     async searchAttractive(req, res){
         try{
             const name = req.params.name;
-            const result  = await service.findAtractiveByName(name);
+            const result  = await service.formatAttactive(name);
             if(result != null){
                 res.status(200).json(result);
             }else{

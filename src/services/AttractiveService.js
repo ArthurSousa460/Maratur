@@ -3,46 +3,64 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-class AttractiveService{
-    async findAtractiveByName(name){
+class AttractiveService {
+    async getContentFK(attractive){
         try{
-            const resultAttractive = await prisma.attractive.findFirst({
-                where: {
-                    name: name 
-                }
-            })
             const resultRegion = await prisma.region.findFirst({
                 where: {
-                    cod_region: resultAttractive.cod_region
+                    cod_region: attractive.cod_region
                 }
             })
             const resultCity = await prisma.city.findFirst({
                 where: {
-                    cod_city: resultAttractive.cod_city
+                    cod_city: attractive.cod_city
                 }
             })
             const resultDestiny = await prisma.destiny.findFirst({
                 where: {
-                    cod_destiny: resultAttractive.cod_destiny
+                    cod_destiny: attractive.cod_destiny
                 }
             })
-            if(resultAttractive != null && resultRegion != null && resultCity != null && resultDestiny != null){
+            if (resultRegion != null && resultCity != null && resultDestiny != null) {
                 return {
-                    name: resultAttractive.name, 
-                    type: resultAttractive.type, 
-                    description: resultAttractive.description,
                     latitude: resultDestiny.latitude,
-                    logitude: resultDestiny.longitude,
+                    longitude: resultDestiny.longitude,
                     city: resultCity.name,
                     region: resultRegion.region_name
-                }
-            }else{
-                return null;
-            }
+                }}
         }catch(e){
             console.log(e);
         }
     }
+
+    async findAttractiveByName(name){
+        try{
+            const result = prisma.attractive.findFirst({
+                where: {
+                    name: name
+                }
+            })
+            return result
+        }catch(e){
+            console.log(e);
+        }
+    }
+    async formatAttactive(name){
+        const resultAttractive = await this.findAttractiveByName(name);
+        const resultContentFK  = await  this.getContentFK(resultAttractive);
+        return {
+            name: resultAttractive.name,
+            type: resultAttractive.type,
+            description: resultAttractive.description,
+            latitude: resultContentFK.latitude,
+            longitude: resultContentFK.longitude,
+            region: resultContentFK.region,
+            city: resultContentFK.city
+        }
+    }
 }
+
+
+
 
 export default AttractiveService;

@@ -7,7 +7,7 @@ class RegionController{
     async searchRegion(req, res){
         try{
             const regionName = req.params.regionName;
-            const result = await service.findByAttractiveByIdRegion(regionName);
+            const result = await service.findByAttractivesByIdRegion(regionName);
             if(result != null){
                 res.status(200).json(result);
             }else{

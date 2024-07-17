@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
-
+import AttractiveService from "./AttractiveService.js";
 
 const prisma = new PrismaClient();
-
+const attService = new AttractiveService();
 
 class RegionService {
     async findByRegionName(regionName){
@@ -17,16 +17,29 @@ class RegionService {
         console.log(e);
       }
     }
+    async formatAttractive(attractive, contentFK){
+      return {
 
-    async findByAttractiveByIdRegion(regionName){
+      }
+    }
+    async findByAttractivesByIdRegion(regionName){
       try{
-        const resultRegionName = await this.findByRegionName(regionName);
-        const result = await prisma.attractive.findMany({
+        const resultRegionName = await this.findByRegionName(regionName); 
+        const attractive = await prisma.attractive.findMany({
           where: {
             cod_region: resultRegionName.cod_region
           }
-        })
-        return result
+        });
+        const fullAtractives = await Promise.all(attractive.map(async (elem) =>{
+          const result = await attService.getContentFK(elem);
+          return {
+            name: elem.name,
+            type: elem.type,
+            description: elem.description,
+            ...result
+          }
+        }));
+        return fullAtractives;
       }catch(e){
         console.log(e);
       }
