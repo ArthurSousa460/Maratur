@@ -11,7 +11,7 @@ class RegionController{
             if(result != null){
                 res.status(200).json(result);
             }else{
-                res.status(400).json({message: "400 - Bad Request"});
+                res.status(400).json({message: "400 - Bad request"});
             }
         }catch(e){
             res.status(500).json({message: "500 - Internal server error"})
