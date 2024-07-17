@@ -21,11 +21,18 @@ class AttractiveService{
                     cod_city: resultAttractive.cod_city
                 }
             })
-            if(resultAttractive != null && resultRegion != null && resultCity != null){
+            const resultDestiny = await prisma.destiny.findFirst({
+                where: {
+                    cod_destiny: resultAttractive.cod_destiny
+                }
+            })
+            if(resultAttractive != null && resultRegion != null && resultCity != null && resultDestiny != null){
                 return {
                     name: resultAttractive.name, 
                     type: resultAttractive.type, 
                     description: resultAttractive.description,
+                    latitude: resultDestiny.latitude,
+                    logitude: resultDestiny.longitude,
                     city: resultCity.name,
                     region: resultRegion.region_name
                 }

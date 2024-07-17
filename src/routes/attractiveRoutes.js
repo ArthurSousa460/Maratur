@@ -6,7 +6,7 @@ const router  = express.Router();
 const attractive = new AttractiveController();
 
 
-router.get("/attractives/:name", (req, res) => attractive.searchAttractive(req, res));
+router.get("/attractive/:name", (req, res) => attractive.searchAttractive(req, res));
 
 
 export default router;
