@@ -17,20 +17,15 @@ class RegionService {
         console.log(e);
       }
     }
-    async formatAttractive(attractive, contentFK){
-      return {
-
-      }
-    }
-    async findByAttractivesByIdRegion(regionName){
+    async findByAttractivesByRegionName(regionName){
       try{
         const resultRegionName = await this.findByRegionName(regionName); 
-        const attractive = await prisma.attractive.findMany({
+        const attractives = await prisma.attractive.findMany({
           where: {
             cod_region: resultRegionName.cod_region
           }
         });
-        const fullAtractives = await Promise.all(attractive.map(async (elem) =>{
+        const fullAtractives = await Promise.all(attractives.map(async (elem) =>{
           const result = await attService.getContentFK(elem);
           return {
             name: elem.name,
