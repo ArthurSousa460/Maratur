@@ -47,10 +47,9 @@ class AttractiveService {
     }
     async formatAttactive(name){
         const resultAttractive = await this.findAttractiveByName(name);
-        console.log(resultAttractive);
         const resultContentFK  = await  this.getContentFK(resultAttractive);
-        console.log(resultContentFK);
         return {
+            id: resultAttractive.cod_attractive,
             name: resultAttractive.name,
             type: resultAttractive.type,
             description: resultAttractive.description,

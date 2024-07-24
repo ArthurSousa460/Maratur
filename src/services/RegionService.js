@@ -28,6 +28,7 @@ class RegionService {
         const fullAtractives = await Promise.all(attractives.map(async (elem) =>{
           const result = await attService.getContentFK(elem);
           return {
+            id: elem.cod_attractive,
             name: elem.name,
             type: elem.type,
             description: elem.description,
