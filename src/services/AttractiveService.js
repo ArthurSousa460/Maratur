@@ -33,6 +33,17 @@ class AttractiveService {
         }
     }
 
+    async findAttractiveById(id){
+        const attractive = await prisma.attractive.findFirst({
+            where : {
+                cod_attractive: Number(id)
+            }
+        })
+        const contentFK = await this.getContentFK(attractive);
+        const result = this.formatAttactive(attractive, contentFK);
+        return result
+    }
+
     async findAttractiveByName(name){
         try{
             const result = prisma.attractive.findFirst({
@@ -45,19 +56,23 @@ class AttractiveService {
             console.log(e);
         }
     }
-    async formatAttactive(name){
+    formatAttactive(attractive, contentFK){
+        return {
+            id: attractive.cod_attractive,
+            name: attractive.name,
+            type: attractive.type,
+            description: attractive.description,
+            latitude: contentFK.latitude,
+            longitude: contentFK.longitude,
+            region: contentFK.region,
+            city: contentFK.city
+        }
+    }
+    async getAttractive(name){
         const resultAttractive = await this.findAttractiveByName(name);
         const resultContentFK  = await  this.getContentFK(resultAttractive);
-        return {
-            id: resultAttractive.cod_attractive,
-            name: resultAttractive.name,
-            type: resultAttractive.type,
-            description: resultAttractive.description,
-            latitude: resultContentFK.latitude,
-            longitude: resultContentFK.longitude,
-            region: resultContentFK.region,
-            city: resultContentFK.city
-        }
+        const result = this.formatAttactive(resultAttractive, resultContentFK);
+        return result;
     }
 }
 

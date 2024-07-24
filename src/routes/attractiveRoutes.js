@@ -7,6 +7,7 @@ const attractive = new AttractiveController();
 
 
 router.get("/attractive", (req, res) => attractive.searchAttractive(req, res));
+router.get("/attractive/id", (req, res) => attractive.findAttractiveByid(req, res));
 
 
 export default router;
