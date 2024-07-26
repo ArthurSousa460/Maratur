@@ -1,3 +1,34 @@
+/*Insert Destiny*/
+INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.4868867760951883",
+    "-44.27616462329263"
+);
+
+INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.465010684041222",
+    "-44.19766963068573"
+);
+
+INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.5288770216520664",
+    "-44.30251339177881"
+);
+INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.528056", 
+    "-44.304722"
+);
+
+
+/* Insert regions*/
+INSERT INTO Region(region_name) VALUES("Centro Historico");
+INSERT INTO Region(region_name) VALUES("Litoral");
+INSERT INTO Region(region_name) VALUES("Teatro");
+
+
+/* Insert citys*/
+INSERT INTO city(name) VALUES("São luís");
+
+
 /* INSERT Attractives*/
 INSERT INTO Attractive(name, type, description, cod_destiny, cod_region, cod_city) 
 VALUES("Pálacio dos leões", 
@@ -9,9 +40,7 @@ VALUES("Pálacio dos leões",
 INSERT INTO Attractive(name, type, description, cod_destiny, cod_region, cod_city) VALUES (
 "Catedral de São Luís",
 "Monumento Histórico",
-"A Catedral de São Luís do Maranhão (Catedral de Nossa Senhora da Vitória) 
-é a sede da arquidiocese do mesmo nome. Localiza-se na Praça Pedro II, no 
-centro de São Luís, capital do estado do Maranhão, no Brasil.",
+"A Catedral de São Luís do Maranhão (Catedral de Nossa Senhora da Vitória) é a sede da arquidiocese do mesmo nome. Localiza-se na Praça Pedro II, no centro de São Luís, capital do estado do Maranhão, no Brasil.",
 "2",
 "1",
 "1"
@@ -37,34 +66,6 @@ INSERT INTO Attractive(name, type, description, cod_destiny, cod_region, cod_cit
     "5",
     "3",
     "1"
-);
-
-/* Insert regions*/
-INSERT INTO Region(region_name) VALUES("Litoral");
-INSERT INTO Region(region_name) VALUES("Centro Historico");
-INSERT INTO Region(region_name) VALUES("Teatro");
-
-
-/* Insert citys*/
-INSERT INTO city(name) VALUES("São luís");
-INSERT INTO Destiny(latitude, longitude) VALUES("-2.528056", "-44.304722");
-
-
-
-/*Insert Destiny*/
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.4868867760951883",
-    "-44.27616462329263"
-);
-
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.465010684041222",
-    "-44.19766963068573"
-);
-
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.5288770216520664",
-    "-44.30251339177881"
 );
 
 

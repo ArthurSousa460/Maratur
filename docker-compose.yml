@@ -1,19 +1,43 @@
-version: "3.8"
+version: "3"
 
 services:
   db:
     image: mysql:8.2
     container_name: mysql_container
-    restart: always
+    restart: unless-stopped
+    env_file: ./.env
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - ./mysql_volume:/var/lib/mysql
+      - mysql_volume:/var/lib/mysql
     ports:
       - "3306:3306"
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
+
+  app:
+    depends_on:
+      db:
+        condition: service_healthy
+    build: .
+    env_file: ./.env
+    container_name: Maratur_API
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    environment:
+      DB_HOST: db
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - .:/app
+    command: ["sh", "-c", "npx prisma migrate dev && npm start"]
 
 volumes:
   mysql_volume:
