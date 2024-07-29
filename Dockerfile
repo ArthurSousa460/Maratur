@@ -13,6 +13,6 @@ EXPOSE 8080
 
 RUN npx prisma generate
 
-CMD ["node", "prisma/seed.js", "&&", "npm", "start"]
+CMD ["npm", "start"]
 
 
