@@ -6,13 +6,12 @@ COPY package*.json ./
 
 RUN rm -rf node_modules
 RUN npm install
+RUN npm i -g npx
 
 COPY . .
 
 EXPOSE 8080
 
-RUN prisma generate
-
-CMD ["node", "prisma/seed.js", "&&", "npm start"]
+CMD ["npx", "prisma", "generate", "node", "prisma/seed.js", "&&", "npm start"]
 
 
