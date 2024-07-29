@@ -11,6 +11,8 @@ COPY . .
 
 EXPOSE 8080
 
+RUN prisma generate
+
 CMD ["node", "prisma/seed.js", "&&", "npm start"]
 
 
