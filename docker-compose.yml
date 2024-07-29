@@ -29,7 +29,7 @@ services:
     container_name: Maratur_API
     restart: unless-stopped
     ports:
-      - 8080:8080
+      - "8080:8080"
     environment:
       DB_HOST: db
       DB_USER: ${MYSQL_USER}
