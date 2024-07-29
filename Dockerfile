@@ -11,6 +11,6 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["npx", "prisma", "migrate", "dev" "&&", "node", "prisma/seed.js", "&&", "npm start"]
+CMD ["node", "prisma/seed.js", "&&", "npm start"]
 
 
