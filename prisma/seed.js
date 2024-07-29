@@ -65,7 +65,7 @@ async function main(){
                 type: "Monumento Histórico",
                 description: "A Catedral de São Luís do Maranhão (Catedral de Nossa Senhora da Vitória) é a sede da arquidiocese do mesmo nome. Localiza-se na Praça Pedro II, no centro de São Luís, capital do estado do Maranhão, no Brasil.",
                 cod_destiny: 2,
-                cod_region: 2,
+                cod_region: 1,
                 cod_city: 1,
             },
             {
