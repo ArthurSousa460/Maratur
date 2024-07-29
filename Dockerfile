@@ -11,6 +11,8 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["npx", "prisma", "generate", "&&", "node", "prisma/seed.js", "&&", "npm", "start"]
+RUN npx prisma generate
+
+CMD ["node", "prisma/seed.js", "&&", "npm", "start"]
 
 
