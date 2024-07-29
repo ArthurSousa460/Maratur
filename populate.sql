@@ -1,28 +1,41 @@
+USE turism;
 /*Insert Destiny*/
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.4868867760951883",
-    "-44.27616462329263"
+
+
+
+/*Palacio dos leões*/ INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.5271314638427054", 
+    "-44.306753776435954"
+)
+
+
+/*Catedral de São luis*/INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.5280094089509864",
+     "-44.30463911769424"
 );
 
-INSERT INTO Destiny(latitude, longitude) VALUES(
+/*praia da litoranea*/INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.486843861028767", 
+    "-44.276379283404395"
+);
+
+
+
+/*araçagy*/INSERT INTO Destiny(latitude, longitude) VALUES(
     "-2.465010684041222",
     "-44.19766963068573"
 );
 
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.5288770216520664",
+/*Teatro Arthur Azevedo*/INSERT INTO Destiny(latitude, longitude) VALUES(
+    "-2.5287805561641252", 
     "-44.30251339177881"
 );
-INSERT INTO Destiny(latitude, longitude) VALUES(
-    "-2.528056", 
-    "-44.304722"
-);
+
 
 
 /* Insert regions*/
 INSERT INTO Region(region_name) VALUES("Centro Historico");
 INSERT INTO Region(region_name) VALUES("Litoral");
-INSERT INTO Region(region_name) VALUES("Teatro");
 
 
 /* Insert citys*/
@@ -62,9 +75,9 @@ INSERT INTO Attractive(name, type, description, cod_destiny, cod_region, cod_cit
 INSERT INTO Attractive(name, type, description, cod_destiny, cod_region, cod_city) VALUES(
     "Teatro Arthur Azevedo",
     "Cultura",
-    "O Teatro Arthur Azevedo, em São Luís do Maranhão, é um dos teatros mais antigos do Brasil. Inaugurado em 1817, possui arquitetura neoclássica e uma rica programação cultural, incluindo peças teatrais, musicais e eventos. É um importante ponto turístico e cultural da cidade.",
+    "O Teatro Arthur Azevedo, em São Luís do Maranhão, é um dos mais antigos do Brasil. Inaugurado em 1817, possui arquitetura neoclássica e uma rica programação cultural com peças teatrais, musicais e eventos.",
     "5",
-    "3",
+    "1",
     "1"
 );
 
